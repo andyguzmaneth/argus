@@ -6,8 +6,8 @@
 > Expect rough edges, breaking changes, and incomplete pieces. **Do not use in production or
 > rely on it for anything serious.** No guarantees of correctness, security, or maintenance.
 
-**A trust-minimized, private Ethereum event feed.** Subscribe to a contract's events and
-get a feed where every item is **verifiable** — proven against the consensus sync committee,
+**Verifiable, private RSS for Ethereum.** Subscribe to a contract's events in any RSS reader
+and get a feed where every item is **verifiable** — proven against the consensus sync committee,
 not trusted from an RPC — and fetched **privately**, with the watcher's queries routed over Tor.
 
 > Demo target: Tornado Cash deposit/withdrawal events.
@@ -25,6 +25,26 @@ not trusted from an RPC — and fetched **privately**, with the watcher's querie
 
 Most on-chain monitoring trusts an RPC provider to tell the truth and leaks to that provider
 exactly which contracts you watch. Argus removes both assumptions.
+
+## Why this is different
+
+Plenty of tools turn on-chain activity into RSS. What they can't do is let you
+*distrust them*: you take their word that the event happened.
+
+Argus ships the proof inside the feed. Every item carries a light-client inclusion
+proof anchored to the **sync-committee-signed block header** (the Helios path, not an
+RPC-returned root), so any subscriber can run `argus verify <item>` and check it against
+mainnet — the feed operator is untrusted. And the feed is fetched over Tor, so subscribing
+leaks nothing about what you watch.
+
+**The novel part isn't RSS — it's a verifiable, private feed on the most boring, universal
+subscription surface there is.** Closest neighbors: [Helios](https://github.com/a16z/helios)
+(trustless event verification, but as an RPC) and [Herodotus](https://www.herodotus.cloud/en/storage-proofs)
+(log proofs, but webhook-to-contract). Argus is proof-carrying events for a human in any RSS reader.
+
+> Argus doesn't claim to have invented verifiable Ethereum access or inclusion proofs — those
+> primitives exist. The new part is welding them onto a standard syndication feed and shipping
+> the proof inside each item.
 
 ## What it is / is NOT
 

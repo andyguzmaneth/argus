@@ -1,5 +1,11 @@
 # Argus
 
+> [!WARNING]
+> **Experimental — exploration / toy examples only.** This is a research spike to explore
+> the Ethereum Access Layer privacy stack (Helios + Tor + Kohaku provider), not a product.
+> Expect rough edges, breaking changes, and incomplete pieces. **Do not use in production or
+> rely on it for anything serious.** No guarantees of correctness, security, or maintenance.
+
 **A trust-minimized, private Ethereum event feed.** Subscribe to a contract's events and
 get a feed where every item is **verifiable** — proven against the consensus sync committee,
 not trusted from an RPC — and fetched **privately**, with the watcher's queries routed over Tor.
@@ -44,7 +50,7 @@ reference consumer, not a reimplementation.
 
 ## Status
 
-Early. **M1 works today**: Helios (via the Kohaku provider) returns verified Tornado
+**Experimental / exploratory.** Toy examples, not production software. **M1 works today**: Helios (via the Kohaku provider) returns verified Tornado
 Deposit/Withdrawal events, optionally with all RPC egress over Tor.
 
 | Milestone | State |

@@ -1,0 +1,29 @@
+{
+  "$comment": "Read-only subscription config. Argus only reads public event logs; it never interacts with these contracts.",
+  "network": "mainnet",
+  "subscriptions": [
+    {
+      "name": "Tornado Cash ETH pools (classic)",
+      "addresses": [
+        "0x12D66f87A04A9E220743712cE6d9bB1B5616B8Fc",
+        "0x47CE0C6eD5B0Ce3d3A51fdb1C52DC66a7c3c2936",
+        "0x910Cbd523D972eb0a6f4cAe4618aD62622b39DbF",
+        "0xA160cdAB225685dA1d56aa342Ad8841c3b53f291"
+      ],
+      "events": [
+        {
+          "name": "Deposit",
+          "signature": "Deposit(bytes32,uint32,uint256)",
+          "topic0": "0xa945e51eec50ab98c161376f0db4cf2aeba3ec92755fe2fcd388bdbbb80ff196",
+          "indexed": ["commitment"]
+        },
+        {
+          "name": "Withdrawal",
+          "signature": "Withdrawal(address,bytes32,address,uint256)",
+          "topic0": "0xe9e508bad6d4c3227e881ca19068f099da81b5164dd6d62b2eaf1e8bc6c34931",
+          "indexed": ["relayer"]
+        }
+      ]
+    }
+  ]
+}

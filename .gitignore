@@ -1,0 +1,11 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.DS_Store
+.env
+.env.*
+!.env.example
+# Helios light-client state + Tor bootstrap cache
+.argus-data/
+.tor-cache/
+*.log
